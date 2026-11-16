@@ -1,0 +1,17 @@
+...
+terraform.tfvars
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+tfplan
+plan.json
+
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+
+# Clés de service account
+*.json.key
+credentials*.json
