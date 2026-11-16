@@ -34,6 +34,21 @@ Lancé sur ma propre infrastructure, le script a détecté 3 écarts réels :
 - une convention de nommage incohérente (`managed-by` / `managed_by`) sur la VM et un bucket ;
 - un sous-réseau sans VPC Flow Logs.
 
-| Avant correction | Après correction |
-|---|---|
-| ![échec](docs/check-echec.png) | ![ok](docs/check-ok.png) |
+### Avant correction : apply bloqué
+
+```text
+$ python3 scripts/my-checker.py; echo "code = $?"
+ÉCHEC : 3 problème(s)
+  - google_compute_instance.web : label 'managed-by' manquant
+  - google_compute_subnetwork.subnet : Flow Logs désactivés
+  - google_storage_bucket.artifacts : label 'managed-by' manquant
+code = 1
+```
+
+### Après correction : plan conforme
+
+```text
+$ python3 scripts/my-checker.py; echo "code = $?"
+OK : plan conforme
+code = 0
+```
